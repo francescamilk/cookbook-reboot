@@ -17,13 +17,35 @@ class RecipesController
 
   def create
     # 1. Ask the user for a name (View)
+    name = @view.ask_name
     # 2. Ask the user for a description (View)
+    # description = @view.ask_description
+
     # 3. Create instance of recipe & save it (Model)
+    # recipe = Recipe.new(name: name, description: description)
+    # recipe.save
+
+    Recipe.create(name: name)
   end
 
-  # def destroy
-  # end
+  def destroy
+    # 1. Display all recipes (View)
+    list()
+    # 2. Ask the user which to delete - by id (View)
+    id = @view.ask_id
+    # 3. Find recipe by id (Model)
+    recipe = Recipe.find(id)
+    # 4. Delete given recipe (Model)
+    recipe.destroy
+  end
 
-  # def mark_as_done
-  # end
+  def mark_as_done
+    # 1. Display all recipes (View)
+    list()
+    # 2. Ask the user which to delete - by id (View)
+    id = @view.ask_id
+    # 3. Find recipe by id (Model)
+    recipe = Recipe.find(id)
+    # 4. Update the given recipe's 'done' status (Model)
+  end
 end
