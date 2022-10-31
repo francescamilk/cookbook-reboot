@@ -23,10 +23,6 @@ class Recipe < ActiveRecord::Base
   def mark!
     @done = !@done
   end
-
-  def fuck
-    puts "FUUUU"
-  end
 end
 
 # pizza = Recipe.find(1)

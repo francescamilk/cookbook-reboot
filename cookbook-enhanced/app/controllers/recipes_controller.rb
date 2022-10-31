@@ -10,7 +10,6 @@ class RecipesController
   def list
     # 1. Retrieve all the recipes (Model)
     recipes = Recipe.all
-
     # 2. Pass the recipes to the view for display (View)
     @view.display(recipes)
   end
@@ -20,12 +19,12 @@ class RecipesController
     name = @view.ask_for("name")
     # 2. Ask the user for a description (View)
     description = @view.ask_for("description")
-
     # 3. Create instance of recipe & save it (Model)
     # recipe = Recipe.new(name: name, description: description)
     # recipe.save
-
     Recipe.create(name: name, description: description)
+
+    list()
   end
 
   def destroy
@@ -37,6 +36,8 @@ class RecipesController
     recipe = Recipe.find(id)
     # 4. Delete given recipe (Model)
     recipe.destroy
+
+    list()
   end
 
   def mark_as_done
@@ -49,7 +50,8 @@ class RecipesController
     # 4. Update the given recipe's 'done' status (Model)
     # recipe.done = !recipe.done
     # recipe.save
-
     recipe.mark!
+
+    list()
   end
 end
