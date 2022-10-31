@@ -1,0 +1,2 @@
+class RecipesView
+end
