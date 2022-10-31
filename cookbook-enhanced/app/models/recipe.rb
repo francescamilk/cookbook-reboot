@@ -20,8 +20,12 @@ class Recipe < ActiveRecord::Base
   # #all
   # #find(id)
 
-  def mark_as_done
+  def mark!
     @done = !@done
+  end
+
+  def fuck
+    puts "FUUUU"
   end
 end
 

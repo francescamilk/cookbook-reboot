@@ -25,5 +25,4 @@ class RecipesView
     puts "Which one (type id) ?"
     gets.chomp.to_i
   end
-
 end

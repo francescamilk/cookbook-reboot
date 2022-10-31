@@ -47,7 +47,9 @@ class RecipesController
     # 3. Find recipe by id (Model)
     recipe = Recipe.find(id)
     # 4. Update the given recipe's 'done' status (Model)
-    recipe.done = !recipe.done
-    recipe.save
+    # recipe.done = !recipe.done
+    # recipe.save
+
+    recipe.mark!
   end
 end
