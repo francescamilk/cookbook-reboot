@@ -1,6 +1,5 @@
 require_relative "view"
 require_relative "recipe"
-require_relative "scrape_allrecipes_service"
 
 class Controller
   def initialize(cookbook)
@@ -9,9 +8,12 @@ class Controller
   end
 
   # USER ACTIONS
-
+  
   def list
-    display_recipes
+    # 1. Get recipes (repo)
+    recipes = @cookbook.all
+    # 2. Display recipes in the terminal (view)
+    @view.display_list(recipes)
   end
 
   def create
@@ -51,14 +53,5 @@ class Controller
     @cookbook.mark_recipe_as_done(index)
     # 4. Display recipes
     display_recipes
-  end
-
-  private
-
-  def display_recipes
-    # 1. Get recipes (repo)
-    recipes = @cookbook.all
-    # 2. Display recipes in the terminal (view)
-    @view.display_list(recipes)
   end
 end
