@@ -19,4 +19,11 @@ class Recipe < ActiveRecord::Base
 
   # #all
   # #find(id)
+
+  def mark_as_done
+    @done = !@done
+  end
 end
+
+# pizza = Recipe.find(1)
+# pizza.mark_as_done

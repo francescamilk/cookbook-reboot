@@ -17,15 +17,15 @@ class RecipesController
 
   def create
     # 1. Ask the user for a name (View)
-    name = @view.ask_name
+    name = @view.ask_for("name")
     # 2. Ask the user for a description (View)
-    # description = @view.ask_description
+    description = @view.ask_for("description")
 
     # 3. Create instance of recipe & save it (Model)
     # recipe = Recipe.new(name: name, description: description)
     # recipe.save
 
-    Recipe.create(name: name)
+    Recipe.create(name: name, description: description)
   end
 
   def destroy
@@ -42,10 +42,12 @@ class RecipesController
   def mark_as_done
     # 1. Display all recipes (View)
     list()
-    # 2. Ask the user which to delete - by id (View)
+    # 2. Ask the user which to update - by id (View)
     id = @view.ask_id
     # 3. Find recipe by id (Model)
     recipe = Recipe.find(id)
     # 4. Update the given recipe's 'done' status (Model)
+    recipe.done = !recipe.done
+    recipe.save
   end
 end
